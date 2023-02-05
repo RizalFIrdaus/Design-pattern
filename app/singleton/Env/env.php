@@ -11,7 +11,7 @@ function env(): array
                 "username" => "root",
                 "password" => ""
             ],
-            "tests" => [
+            "test" => [
                 "host" => "localhost",
                 "port" => 3306,
                 "dbname" => "singleton_test",
