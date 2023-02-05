@@ -9,16 +9,22 @@ class ProductRepository
 {
     private \PDO $connnection;
 
-    public function __construct()
+    public function __construct(\PDO $connection)
     {
-        $this->connnection = Database::getConnection();
+        $this->connnection = $connection;
     }
 
     public function save(Product $product = null): ?Product
     {
         if ($product == null) return null;
-        $statement = $this->connnection->prepare("INSERT (id,name,category,price) INTO products VALUE (?,?,?,?)");
+        $statement = $this->connnection->prepare("INSERT INTO products (id,name,category,price)  VALUE (?,?,?,?)");
         $statement->execute([$product->id, $product->name, $product->category, $product->price]);
         return $product;
+    }
+
+    public function deleteAll(): bool
+    {
+        $this->connnection->exec("DELETE FROM products");
+        return true;
     }
 }

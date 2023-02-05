@@ -12,13 +12,13 @@ class ProductService
     {
     }
 
-    public function create()
+    public function create(): Product
     {
         $product = new Product();
         $product->id = "indomie";
         $product->name = "Indomie Goreng";
         $product->category = "Makanan Instan";
         $product->price = 3500;
-        $this->productRepository->save($product);
+        return $this->productRepository->save($product);
     }
 }
