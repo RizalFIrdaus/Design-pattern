@@ -4,12 +4,12 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Rizal\\Design-Pattern\\": "app/"
+            "Rizal\\DesignPattern\\": "app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Rizal\\Design-Pattern\\":"tests/"
+            "Rizal\\DesignPattern\\":"tests/"
         }
     },
     "authors": [
