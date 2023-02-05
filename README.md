@@ -1,6 +1,5 @@
 # Design Pattern
 
-> About
 > A design pattern is a general repeatable solution to a commonly occurring problem in software design. It's not a finished design that can be transformed directly into code. Rather, it is a description or template for how to solve a problem that can be used in many different situations.
 
 Source: "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. This book is considered one of the classic references on design patterns in software engineering.
