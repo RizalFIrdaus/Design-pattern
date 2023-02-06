@@ -15,7 +15,6 @@ Source: "Design Patterns: Elements of Reusable Object-Oriented Software" by Eric
 ## What is singleton ?
 
 > _Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance._ .
-> **- "Design Patterns: Elements of Reusable Object-Oriented Software"**
 
 ## Implementation
 
