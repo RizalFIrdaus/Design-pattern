@@ -77,6 +77,11 @@ class Database
 }
 ```
 
+## More Information about singleton pattern
+
+> Refactoring Guru
+> https://refactoring.guru/design-patterns/singleton
+
 ### Built By
 
 Muhammad Rizal Firdaus
