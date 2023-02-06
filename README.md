@@ -14,7 +14,7 @@ Source: "Design Patterns: Elements of Reusable Object-Oriented Software" by Eric
 
 ## What is singleton ?
 
-> _A design pattern is a general repeatable solution to a commonly occurring problem in software design. It's not a finished design that can be transformed directly into code. Rather, it is a description or template for how to solve a problem that can be used in many different situations._ .
+> _Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance._ .
 > **- "Design Patterns: Elements of Reusable Object-Oriented Software"**
 
 ## Implementation
