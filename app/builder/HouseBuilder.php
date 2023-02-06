@@ -2,8 +2,12 @@
 
 namespace Rizal\DesignPattern\builder;
 
+interface HouseBuilderInterface
+{
+    public function build(): House;
+}
 
-class HouseBuilder
+class HouseBuilder implements HouseBuilderInterface
 {
     private int $windows = 0;
     private int $doors = 0;

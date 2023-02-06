@@ -23,8 +23,10 @@ class HouseBuilderTest extends TestCase
         $house3 = (new HouseBuilder())
             ->setDoors(1)
             ->build();
+        $house4 = (new HouseBuilder())->build();
         self::assertNotNull($house1);
         self::assertNotNull($house2);
         self::assertNotNull($house3);
+        self::assertNotNull($house4);
     }
 }
