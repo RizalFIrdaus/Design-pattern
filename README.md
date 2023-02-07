@@ -20,7 +20,7 @@ Source: "Design Patterns: Elements of Reusable Object-Oriented Software" by Eric
 
 Env File **Env\env.php**
 
-> This file serves as the environment variable for the database, with "prod" for production and "test" for testing purposes.
+**This file serves as the environment variable for the database, with "prod" for production and "test" for testing purposes.**
 
 ```php
 function env(): array
@@ -113,7 +113,17 @@ OK (1 test, 4 assertions)
 
 # Builder
 
-**builder/house.php**
+## What is Builder ?
+
+> Builder Pattern is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code. The Builder pattern provides a way to create objects that are expected to have a complex structure.
+
+Source : "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides."
+
+## Implementation
+
+**In this scenario, Builder pattern can help solve the problem. We can create a builder class for each type of house we want to build (e.g. MansionBuilder, HotelBuilder, etc.), each builder class will have methods to specify each part of the house. In the case of Mansion, we don't need to set the garage to null because the MansionBuilder does not have a method to add a garage. The main house class will call the methods of the selected builder to build the house. This will make the code more structured and easier to read. By creating a new object that is the builder of the house object, whatever we set will not affect the constructor. This way, we can build the pool only without setting the garage to null.**
+
+builder/house.php
 
 ```php
 class House
