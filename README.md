@@ -78,7 +78,7 @@ class Database
 
 ## Testing
 
->
+> This test will test the singleton pattern, if successful, creating objects repeatedly will return the same object. This is because the singleton pattern has been applied.
 
 ```php
 public function testSingleton()
