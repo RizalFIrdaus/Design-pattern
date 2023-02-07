@@ -76,10 +76,61 @@ class Database
 }
 ```
 
+## Testing
+
+>
+
+```php
+public function testSingleton()
+    {
+        $connection1 = Database::getConnection();
+        $connection2 = Database::getConnection();
+        $connection3 = Database::getConnection();
+        self::assertSame($connection1, $connection2);
+        self::assertSame($connection3, $connection2);
+        self::assertSame($connection1, $connection3);
+    }
+```
+
+Result :
+
+```shell
+PHPUnit 10.0.3 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.2.0
+
+.                                                                   1 / 1 (100%)
+
+Time: 00:00.367, Memory: 6.00 MB
+
+OK (1 test, 4 assertions)
+```
+
 ## More Information about singleton pattern
 
 > Refactoring Guru
 > https://refactoring.guru/design-patterns/singleton
+
+# Builder
+
+**builder/house.php**
+
+```php
+class House
+{
+    public function __construct(
+        private int $windows,
+        private int $doors,
+        private int $rooms,
+        private bool $gerage,
+        private bool $swimmingPool,
+        private bool $statues,
+        private bool $garden,
+    ) {
+    }
+}
+
+```
 
 ### Built By
 
