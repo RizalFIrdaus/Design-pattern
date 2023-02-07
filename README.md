@@ -47,9 +47,9 @@ function env(): array
 
 ```
 
-Connection Database **Connection\Database.php**
+Connection Database _Connection\Database.php_
 
-> The implementation of the Singleton pattern is actually quite simple, as it follows the definition of using one object for multiple actions. This is done by checking if the object has already been created. If the object is still null, meaning it hasn't been created yet, a new object will be created. But if the object has already been created, the previously created object will be returned instead of creating a new one. This ensures that there is only one instance of the class at any given time.
+**The implementation of the Singleton pattern is actually quite simple, as it follows the definition of using one object for multiple actions. This is done by checking if the object has already been created. If the object is still null, meaning it hasn't been created yet, a new object will be created. But if the object has already been created, the previously created object will be returned instead of creating a new one. This ensures that there is only one instance of the class at any given time.**
 
 ```php
 class Database
@@ -123,7 +123,8 @@ Source : "Design Patterns: Elements of Reusable Object-Oriented Software" by Eri
 
 **In this scenario, Builder pattern can help solve the problem. We can create a builder class for each type of house we want to build (e.g. MansionBuilder, HotelBuilder, etc.), each builder class will have methods to specify each part of the house. In the case of Mansion, we don't need to set the garage to null because the MansionBuilder does not have a method to add a garage. The main house class will call the methods of the selected builder to build the house. This will make the code more structured and easier to read. By creating a new object that is the builder of the house object, whatever we set will not affect the constructor. This way, we can build the pool only without setting the garage to null.**
 
-builder/house.php
+_builder/house.php_
+To start creating the Builder Pattern in this case study, first, we need to create an abstract class for the house.
 
 ```php
 class House
@@ -141,6 +142,133 @@ class House
 }
 
 ```
+
+_builder\HouseBuilder.php_
+Create the HouseBuilder interface first, it contains the build function which must be overridden as a builder in the HouseBuilder class later
+
+```php
+interface HouseBuilderInterface
+{
+    public function build(): House;
+}
+```
+
+_builder/HouseBuilder.php_
+Then, create the HouseBuilder class which is an implementation of the HouseBuilderInterface, then create the constructor for all the properties and create the build function which is the creation of an object. To handle the null variable, we can set the default value in the property in the HouseBuilder class.
+
+```php
+class HouseBuilder implements HouseBuilderInterface
+{
+    private int $windows = 0;
+    private int $doors = 0;
+    private int $rooms = 0;
+    private bool $gerage = false;
+    private bool $swimmingPool = false;
+    private bool $statues = false;
+    private bool $garden = false;
+
+    public function setWindows(int $windows)
+    {
+        $this->windows = $windows;
+        return $this;
+    }
+
+    public function setDoors(int $doors)
+    {
+        $this->doors = $doors;
+        return $this;
+    }
+
+    public function setRooms(int $rooms)
+    {
+        $this->rooms = $rooms;
+        return $this;
+    }
+
+    public function setGerage(bool $gerage)
+    {
+        $this->gerage = $gerage;
+        return $this;
+    }
+    public function setSwimingPool(bool $swimmingPool)
+    {
+        $this->swimmingPool = $swimmingPool;
+        return $this;
+    }
+
+    public function setStatues(bool $statues)
+    {
+        $this->statues = $statues;
+        return $this;
+    }
+
+    public function setGarden(bool $garden)
+    {
+        $this->garden = $garden;
+        return $this;
+    }
+
+    public function build(): House
+    {
+        return new House(
+            $this->windows,
+            $this->doors,
+            $this->rooms,
+            $this->gerage,
+            $this->swimmingPool,
+            $this->statues,
+            $this->garden
+        );
+    }
+}
+```
+
+## Testing
+
+In this testing process, a check will be made to see if houses built with different combinations without setting unnecessary properties will result in non-null variables.
+
+```php
+ public function testHouseBuild()
+    {
+        $house1 = (new HouseBuilder())
+            ->setWindows(2)
+            ->setGerage(true)
+            ->setRooms(2)
+            ->setDoors(1)
+            ->build();
+        $house2 = (new HouseBuilder())
+            ->setDoors(2)
+            ->setWindows(4)
+            ->setRooms(1)
+            ->build();
+        $house3 = (new HouseBuilder())
+            ->setDoors(1)
+            ->build();
+        $house4 = (new HouseBuilder())->build();
+        self::assertNotNull($house1);
+        self::assertNotNull($house2);
+        self::assertNotNull($house3);
+        self::assertNotNull($house4);
+    }
+```
+
+The Result
+
+```shell
+PHPUnit 10.0.3 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.2.0
+
+.                                                                   1 / 1 (100%)
+
+Time: 00:00.386, Memory: 6.00 MB
+
+OK (1 test, 4 assertions)
+```
+
+## More Information about Builder
+
+https://refactoring.guru/design-patterns/builder
 
 ### Built By
 
