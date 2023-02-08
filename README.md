@@ -372,6 +372,10 @@ https://refactoring.guru/design-patterns/factory-method
 
 https://refactoring.guru/design-patterns/abstract-factory
 
+# Prototype
+
+https://refactoring.guru/design-patterns/prototype
+
 ### Built By
 
 Muhammad Rizal Firdaus
