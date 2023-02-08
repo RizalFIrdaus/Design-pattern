@@ -368,6 +368,10 @@ Testing will be performed in three stages, checking if the output of the sayWelc
 
 https://refactoring.guru/design-patterns/factory-method
 
+# Abstract Factory
+
+https://refactoring.guru/design-patterns/abstract-factory
+
 ### Built By
 
 Muhammad Rizal Firdaus
