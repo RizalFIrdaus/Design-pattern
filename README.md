@@ -376,6 +376,8 @@ https://refactoring.guru/design-patterns/abstract-factory
 
 https://refactoring.guru/design-patterns/prototype
 
-### Built By
+# Adapter
+
+https://refactoring.guru/design-patterns/adapter### Built By
 
 Muhammad Rizal Firdaus
