@@ -2,6 +2,7 @@
 
 namespace Rizal\DesignPattern\abstractfactory;
 
+
 class ProductFactoryMid implements ProductFactory
 {
     public function createAmdProduct(): Amd

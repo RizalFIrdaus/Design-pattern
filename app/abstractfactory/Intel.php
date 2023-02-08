@@ -7,6 +7,3 @@ interface Intel
 {
     public function result(): string;
 }
-
-
-

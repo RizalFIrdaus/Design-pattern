@@ -2,6 +2,7 @@
 
 namespace Rizal\DesignPattern\abstractfactory;
 
+
 class ProductFactoryHigh implements ProductFactory
 {
     public function createAmdProduct(): Amd

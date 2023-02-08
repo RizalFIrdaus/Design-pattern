@@ -2,7 +2,6 @@
 
 namespace Rizal\DesignPattern\abstractfactory;
 
-use Rizal\DesignPattern\abstractfactory\Amd;
 
 class ProductFactoryLow implements ProductFactory
 {
