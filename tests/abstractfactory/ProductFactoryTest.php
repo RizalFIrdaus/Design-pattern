@@ -3,7 +3,9 @@
 namespace Rizal\DesignPattern\abstractfactory;
 
 use PHPUnit\Framework\TestCase;
-
+use Rizal\DesignPattern\abstractfactory\Factory\ProductFactoryHigh;
+use Rizal\DesignPattern\abstractfactory\Factory\ProductFactoryLow;
+use Rizal\DesignPattern\abstractfactory\Factory\ProductFactoryMid;
 
 class ProductFactoryTest extends TestCase
 {
