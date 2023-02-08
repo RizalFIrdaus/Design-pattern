@@ -18,7 +18,7 @@ Source: "Design Patterns: Elements of Reusable Object-Oriented Software" by Eric
 
 ## Implementation
 
-Env File **Env\env.php**
+### Env
 
 **This file serves as the environment variable for the database, with "prod" for production and "test" for testing purposes.**
 
@@ -47,9 +47,9 @@ function env(): array
 
 ```
 
-Connection Database _Connection\Database.php_
-
 **The implementation of the Singleton pattern is actually quite simple, as it follows the definition of using one object for multiple actions. This is done by checking if the object has already been created. If the object is still null, meaning it hasn't been created yet, a new object will be created. But if the object has already been created, the previously created object will be returned instead of creating a new one. This ensures that there is only one instance of the class at any given time.**
+
+### Database Class
 
 ```php
 class Database
@@ -123,7 +123,8 @@ Source : "Design Patterns: Elements of Reusable Object-Oriented Software" by Eri
 
 **In this scenario, Builder pattern can help solve the problem. We can create a builder class for each type of house we want to build (e.g. MansionBuilder, HotelBuilder, etc.), each builder class will have methods to specify each part of the house. In the case of Mansion, we don't need to set the garage to null because the MansionBuilder does not have a method to add a garage. The main house class will call the methods of the selected builder to build the house. This will make the code more structured and easier to read. By creating a new object that is the builder of the house object, whatever we set will not affect the constructor. This way, we can build the pool only without setting the garage to null.**
 
-_builder/house.php_
+### House Class
+
 To start creating the Builder Pattern in this case study, first, we need to create an abstract class for the house.
 
 ```php
@@ -143,7 +144,8 @@ class House
 
 ```
 
-_builder\HouseBuilder.php_
+### HouseBuilderInterface
+
 Create the HouseBuilder interface first, it contains the build function which must be overridden as a builder in the HouseBuilder class later
 
 ```php
@@ -153,7 +155,8 @@ interface HouseBuilderInterface
 }
 ```
 
-_builder/HouseBuilder.php_
+### House Builder Class
+
 Then, create the HouseBuilder class which is an implementation of the HouseBuilderInterface, then create the constructor for all the properties and create the build function which is the creation of an object. To handle the null variable, we can set the default value in the property in the HouseBuilder class.
 
 ```php
@@ -266,9 +269,104 @@ Time: 00:00.386, Memory: 6.00 MB
 OK (1 test, 4 assertions)
 ```
 
-## More Information about Builder
+## More information about Builder
 
 https://refactoring.guru/design-patterns/builder
+
+# Factory Method
+
+## What is Factory Method Pattern ?
+
+> Factory Method is a creational design pattern that provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created. It's a way to delegate the instantiation logic to child classes.
+
+- Design Patterns: Elements of Reusable Object-Oriented Software by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides
+
+## Implementation
+
+When creating an employee object that has the properties of name, position, and salary, the employee object will create a manager with the name x with the position of manager and a salary of 10. Then we want to create a new manager with the name y with the same position, which is manager, and a salary of 10. In another scenario, we want to create a Staff with the name V with the position of staff and a salary of 8. What is wrong in this situation? Nothing seems to be wrong, but we are writing the program poorly. So, how do we solve this issue? We can use the factory method design pattern, which separates the creation of the staff and manager positions when creating the employee object.
+
+### Employee Class
+
+```php
+class Employee
+{
+    public function __construct(
+        private string $name,
+        private string $title,
+        private string $salary
+    ) {
+    }
+
+    public function sayWelcome(): string
+    {
+        return "Hello $this->name, selamat datang diperusahaan kami sebagai $this->title, dengan salary $this->salary";
+    }
+}
+```
+
+### Employee Factory
+
+```php
+class EmployeeFactory
+{
+    public static function createManager(string $name): Employee
+    {
+        return new Employee($name, "Manager", 8000000);
+    }
+
+    public static function createProgrammer(string $name): Employee
+    {
+        return new Employee($name, "Programmer", 12000000);
+    }
+}
+```
+
+## Testing
+
+Testing will be performed in three stages, checking if the output of the sayWelcome function is equal or not.
+
+### Test Manager
+
+```php
+ public function testManager()
+    {
+        $manager1 = EmployeeFactory::createManager("Fahmi Ihsan");
+        $manager2 = EmployeeFactory::createManager("Anisa Maulifa");
+        self::assertNotNull($manager1);
+        self::assertNotNull($manager2);
+        self::assertEquals("Hello Fahmi Ihsan, selamat datang diperusahaan kami sebagai Manager, dengan salary 8000000", $manager1->sayWelcome());
+        self::assertEquals("Hello Anisa Maulifa, selamat datang diperusahaan kami sebagai Manager, dengan salary 8000000", $manager2->sayWelcome());
+    }
+```
+
+### Test Programmer
+
+```php
+ public function testProgrammer()
+    {
+        $programmer1 = EmployeeFactory::createProgrammer("Rizal");
+        $programmer2 = EmployeeFactory::createProgrammer("Firdaus");
+        self::assertNotNull($programmer1);
+        self::assertNotNull($programmer2);
+        self::assertEquals("Hello Rizal, selamat datang diperusahaan kami sebagai Programmer, dengan salary 12000000", $programmer1->sayWelcome());
+        self::assertEquals("Hello Firdaus, selamat datang diperusahaan kami sebagai Programmer, dengan salary 12000000", $programmer2->sayWelcome());
+    }
+```
+
+### Test FactoryMethod
+
+```php
+  public function testFactoryMethod()
+    {
+        $manager = EmployeeFactory::createManager("Joko");
+        $programmer = EmployeeFactory::createProgrammer("Imron");
+        self::assertNotEquals($manager, $programmer);
+    }
+```
+
+## More information about Factory Method
+
+https://refactoring.guru/design-patterns/factory-method
 
 ### Built By
 
