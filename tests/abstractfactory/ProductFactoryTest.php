@@ -18,5 +18,7 @@ class ProductFactoryTest extends TestCase
         self::assertEquals("Intel Mid End", $midSpec->getFactory()->createIntelProduct()->result());
         self::assertEquals("Intel High End", $highSpec->getFactory()->createIntelProduct()->result());
         self::assertEquals("Amd Mid End", $midSpec->getFactory()->createAmdProduct()->result());
+        self::assertEquals("Cyrix Mid End", $midSpec->getFactory()->createCyrixProduct()->result());
+        self::assertEquals("Cyrix Low End", $lowSpec->getFactory()->createCyrixProduct()->result());
     }
 }
