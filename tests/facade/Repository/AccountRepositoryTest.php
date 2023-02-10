@@ -34,4 +34,12 @@ class AccountRepositoryTest extends TestCase
         $response2 = $this->accountRepository->getById("2223");
         self::assertNull($response2);
     }
+
+    public function testUpdate()
+    {
+        $account = $this->accountRepository->getById("0001");
+        $account->setSaldo(10000000);
+        $response = $this->accountRepository->update($account);
+        self::assertEquals($account->getSaldo(), $response->getSaldo());
+    }
 }

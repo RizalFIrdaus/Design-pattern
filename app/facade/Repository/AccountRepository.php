@@ -28,4 +28,10 @@ class AccountRepository
             return null;
         }
     }
+    public function update(BankAccount $bankAccount): BankAccount
+    {
+        $statement = $this->connection->prepare("UPDATE accounts SET saldo=? WHERE no_rek = ?");
+        $statement->execute([$bankAccount->getSaldo(), $bankAccount->getNoRek()]);
+        return $bankAccount;
+    }
 }

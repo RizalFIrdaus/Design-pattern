@@ -10,13 +10,17 @@ class TransferBankService
     public function __construct(private AccountRepository $accountRepository)
     {
     }
-    public function transfer(BankAccount $from, BankAccount $to, $saldo)
+    public function transfer(BankAccount $from, BankAccount $to, $saldo): bool
     {
+        if ($from->getSaldo() < $saldo) {
+            return false;
+        }
         $Tfform = $this->accountRepository->getById($from->getNoRek());
         $Tfto = $this->accountRepository->getById($to->getNoRek());
-        $Tfform->getSaldo() - $saldo;
-        $Tfto->getSaldo() + $saldo;
-        $this->accountRepository->save($Tfform);
-        $this->accountRepository->save($Tfto);
+        $transfer = $Tfform->setSaldo($Tfform->getSaldo() - $saldo);
+        $transfer2 = $Tfto->setSaldo($Tfto->getSaldo() + $saldo);
+        $this->accountRepository->update($transfer);
+        $this->accountRepository->update($transfer2);
+        return true;
     }
 }
