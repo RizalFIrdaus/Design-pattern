@@ -54,4 +54,14 @@ class ProductRepositoryTest extends TestCase
         $response = $this->productRepository->getAll();
         self::assertIsArray($response);
     }
+
+    public function testDeleteById()
+    {
+        $response = $this->productRepository->save($this->product);
+        self::assertNotNull($response);
+        $delete = $this->productRepository->deleteById($response->getId());
+        self::assertTrue($delete);
+        $res = $this->productRepository->deleteById("WAD");
+        self::assertFalse($res);
+    }
 }

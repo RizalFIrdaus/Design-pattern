@@ -52,4 +52,13 @@ class ProductRepository
             return null;
         }
     }
+    public function deleteById(string $id): bool
+    {
+        if ($this->getById($id) != null) {
+            $statement = $this->conenction->prepare("DELETE FROM products WHERE id=?");
+            $statement->execute([$id]);
+            return true;
+        }
+        return false;
+    }
 }
