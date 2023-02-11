@@ -370,14 +370,30 @@ https://refactoring.guru/design-patterns/factory-method
 
 # Abstract Factory
 
+-Soon
+
 https://refactoring.guru/design-patterns/abstract-factory
 
 # Prototype
+
+-Soon
 
 https://refactoring.guru/design-patterns/prototype
 
 # Adapter
 
+-Soon
+
 https://refactoring.guru/design-patterns/adapter### Built By
+
+# Facade
+
+-Soon
+
+# Repository
+
+-Soon
+
+#
 
 Muhammad Rizal Firdaus
