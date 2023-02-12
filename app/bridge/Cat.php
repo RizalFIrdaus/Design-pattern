@@ -8,4 +8,8 @@ class Cat extends AnimalEarth
     {
         return "Cat";
     }
+    public function getFeet(): int
+    {
+       return 4;
+    }
 }

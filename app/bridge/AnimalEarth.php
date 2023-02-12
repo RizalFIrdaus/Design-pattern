@@ -14,4 +14,7 @@ abstract class AnimalEarth implements Animal
     {
         return true;
     }
+    public abstract function getFeet():int;
+
+
 }

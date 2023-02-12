@@ -14,4 +14,6 @@ abstract class AnimalSea implements Animal
     {
         return false;
     }
+
+    public abstract function getBreath():string;
 }

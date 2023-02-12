@@ -8,4 +8,6 @@ interface Animal
     public function getSeaHabit():bool;
     public function getEarthHabit():bool;
 
+
+
 }

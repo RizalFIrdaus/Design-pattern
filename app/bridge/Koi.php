@@ -8,4 +8,10 @@ class Koi extends AnimalSea
     {
         return "Koi";
     }
+
+    public function getBreath(): string
+    {
+        return "Insang";
+    }
 }
+
