@@ -7,4 +7,5 @@ interface Animal
     public function getName():string;
     public function getSeaHabit():bool;
     public function getEarthHabit():bool;
+
 }
